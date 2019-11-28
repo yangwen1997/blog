@@ -1,0 +1,10 @@
+/*全局css*/
+
+html，body,span,div{
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration:none
+}
