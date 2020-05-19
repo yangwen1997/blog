@@ -1,29 +1,22 @@
 <template>
     <div id="sdxy">
-        <h2>{{this.$route.query.compantName}}爬虫程序数据演示</h2>
-        <br>
-        <div>
-          <div class="icon-close">
-            <a href="javascript:void(0)"><i class="el-icon-close"></i></a></div>
+      <div class="headerTop" :style="{backgroundImage:'url('+ this.$route.query.img +')'}">
+             <h2>{{this.$route.query.compantName}}爬虫程序数据演示</h2>
 
-        <div class="Tips">
-            <i class="el-icon-chat-dot-square"></i>
-            <span >温馨提示!</span>
-          <br>
-          <br>
-          <span>本页面可以通过在下方输入企业名称点击启动按钮实现实时爬虫程序进行实时抓取数据信息演示，仅作展示参考，
-          不具有存储数据功能。</span>
+            <el-select v-model="value" placeholder="请选择" class="top_select">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+
+             <el-input v-model="input" placeholder="请输入需要查询的公司名称"></el-input>
+             <el-button type="success" class="search">搜索</el-button>
         </div>
-
-        </div>
-
       <br>
       <br>
-          <el-input v-model="input" placeholder="请输入需要查询的公司名称" style="width: 260px;left: -500px"></el-input>
-
-        <div class="header" >
-          <a href="javascript:void(0);" @click="test()"><i>点击查询</i><i class="el-icon-caret-right"></i></a>
-        </div>
 
         <!--左侧结果栏-->
         <div></div>
@@ -97,62 +90,41 @@
             }
           },
         }
-
-
     }
 </script>
 
 <style scoped lang="scss">
   #sdxy{
-    margin: 0;
+    margin-top: -28px;
     padding: 0;
     width: 100%;
     line-height: 100%;
     background-color: #ECF0F5;
 
-  .header{
-    float: left;
-    justify-content: center;
-    /*background-color: purple;*/
 
-    top: 0;
-    /*width: 45px;*/
-    /*height: 30px;*/
-    transform: translate(560px,5px);
-    -webkit-transform: translate(560px,5px);
-    -ms-transform: translate(560px,5px);
-    i{
-      font-size:30px;
-      font-weight: bold;
-      color: #5A8C5A;
-      font-style:normal;
+  }
+  .headerTop{
+    height: 25em;
+    margin: 0;
+    padding: 0;
+    width: 99.9%;
+    h2{
+      transform: translate(-15px,70px);
+      color:#FFFFFF;
+      font-size: 35px;
     }
-  }
-  }
-  .Tips{
-    text-align: left;
-    height: 120px;
-    background-color: #40BAF5;
-    width: 99%;
+    .el-input{
+      width: 500px;
+      transform: translate(0,120px);
+    }
+    .search{
 
-    i{
-      font-size:30px;
-      font-weight: bold;
-      color: #E0EDFB;
-      margin-left: 20px;
-      margin-top: 15px;
+      transform: translate(0,120px)
+
     }
-    span:nth-child(2){
-      margin-left: 15px;
-      font-size: 25px;
-      color: #FFFFFF;
-      font-weight:bold;
-    }
-    span:nth-child(5){
-      margin-left: 90px;
-      font-size: 16px;
-      color: #FFFFFF;
-      font-weight:bold;
+    .top_select{
+      margin-left: -70px;
+       transform: translate(0,120px);
     }
   }
   .icon-close{

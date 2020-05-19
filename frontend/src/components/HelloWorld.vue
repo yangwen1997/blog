@@ -1,14 +1,13 @@
 <template>
   <el-container>
     <!--左侧导航菜单-->
-    <el-aside style="width: 225px;height: 900px">
-
+    <el-aside style="width: 225px;">
       <el-menu :default-active="activeIndex" text-color="grey" @select="handleSelect"
-               style="width: 230px;height: 95%;background-color: #222D32">
+               style="width: 230px;background-color: #222D32">
 
         <el-submenu index="1">
           <template slot="title">
-            <i class="el-icon-location"></i>
+            <i class="el-icon-orange"></i>
             <span slot="title">实时数据查询演示</span>
           </template>
 
@@ -37,7 +36,7 @@
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span slot="title">实时数据查询演示</span>
+            <span slot="title">数据表管理信息</span>
           </template>
 
           <el-menu-item-group>
@@ -64,7 +63,7 @@
         <el-submenu index="3">
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span slot="title">实时数据查询演示</span>
+            <span slot="title">商标信息管理</span>
           </template>
 
           <el-menu-item-group>
@@ -91,7 +90,7 @@
         <el-submenu index="4">
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span slot="title">实时数据查询演示</span>
+            <span slot="title">专利信息管理</span>
           </template>
 
           <el-menu-item-group>
@@ -151,7 +150,8 @@
        handleSelect(val,path){
         if (val == '1-2-1'){
           this.compantName = "企查查";
-          this.$router.push({path:'/Spider',query:{"compantName":this.compantName}})
+          let img = require('../assets/spider/qcc_.png');
+          this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"img":img}})
         }else if(val == '1-3-1'){
           this.compantName = "水滴信用";
           this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"url":"/test/crawler/sdxy_data_search"}})
@@ -173,23 +173,17 @@
 
 <style lang="scss" scoped>
 
-  /*.el-container{*/
-     /*min-height: 100%;*/
-    /*height: 100%;*/
-    /*position: relative;*/
-  /*}*/
   .el-aside{
-    /*position: fixed;*/
-    position: absolute;
-    top: 90px;
-    left: 0;
     padding: 50px 0 0 0;
-    /*padding-top: 50px;*/
+    overflow: hidden;
     min-height: 80%;
-    height:auto;
     background-color: #222d32;
     width: 250px;
     z-index: 810;
+    position: relative;
+    display: block;
+    margin-top: 90px;
+    text-align: left;
   }
   .el-header{
     background-color: #6B7F8C;
@@ -204,19 +198,16 @@
       line-height: 75px;
       color: #fff
     }
-      a{
+    a{
         cursor: pointer;
       }
-    left: 0;
+    margin-left: -300px;
 
   }
   .el-main{
     right: 0;
-    margin: 0 0 0 230px;
     padding: 0;
-
   }
-
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;

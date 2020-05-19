@@ -17,8 +17,5 @@ body{
     color: #333;
     background-color: #ECF0F5;;
     display: block;
-    overflow-x: auto;
-    overflow-y: auto;
     box-sizing: border-box;
-    /*bottom: 0;*/
 }
