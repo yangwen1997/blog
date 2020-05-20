@@ -3,7 +3,7 @@
     <!--左侧导航菜单-->
     <el-aside style="width: 225px;">
       <el-menu :default-active="activeIndex" text-color="grey" @select="handleSelect"
-               style="width: 230px;background-color: #222D32">
+               style="width: 230px;">
 
         <el-submenu index="1">
           <template slot="title">
@@ -154,13 +154,16 @@
           this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"img":img}})
         }else if(val == '1-3-1'){
           this.compantName = "水滴信用";
-          this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"url":"/test/crawler/sdxy_data_search"}})
+           let img = require('../assets/spider/sdxy.png');
+          this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"url":"/test/crawler/sdxy_data_search","img":img}})
         }else if(val == '1-4-1'){
           this.compantName = "百度信用";
-          this.$router.push({path:'/Spider',query:{"compantName":this.compantName}})
+          let img = require('../assets/spider/bdxy.jpg');
+          this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"img":img}})
         }else if(val == '1-5-1'){
           this.compantName = "天眼查";
-          this.$router.push({path:'/Spider',query:{"compantName":this.compantName}})
+          let img = require('../assets/spider/tyc.jpg');
+          this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"img":img}})
         }
 
         console.log(val)
@@ -176,14 +179,15 @@
   .el-aside{
     padding: 50px 0 0 0;
     overflow: hidden;
-    min-height: 80%;
     background-color: #222d32;
     width: 250px;
-    z-index: 810;
-    position: relative;
-    display: block;
     margin-top: 90px;
     text-align: left;
+    display: block;
+    position: relative;
+    .el-menu{
+      background-color:#222d32;
+    }
   }
   .el-header{
     background-color: #6B7F8C;

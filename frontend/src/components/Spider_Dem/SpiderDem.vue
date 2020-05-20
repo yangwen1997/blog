@@ -13,7 +13,7 @@
             </el-select>
 
              <el-input v-model="input" placeholder="请输入需要查询的公司名称"></el-input>
-             <el-button type="success" class="search">搜索</el-button>
+             <el-button type="success" class="search" @click="a()">搜索</el-button>
         </div>
       <br>
       <br>
@@ -56,12 +56,31 @@
       data(){
           return{
               input: '',
-              casedata :{
-                "公司名":"阿里巴巴（中国）网络技术有限公司",
-                "注册资本":"512233.000000万美元",
-                "实缴资本":"59690.0万美元",
-                "统一社会信用代码":"91330100716105852F"
-                },
+           options: [
+             {
+          value: '选项1',
+          label: '黄金糕'
+        }, {
+          value: '选项2',
+          label: '双皮奶'
+        }, {
+          value: '选项3',
+          label: '蚵仔煎'
+        }, {
+          value: '选项4',
+          label: '龙须面'
+        },{
+          value: '选项5',
+          label: '北京烤鸭'
+        }
+          ],
+            value: '',
+            casedata :{
+              "公司名":"阿里巴巴（中国）网络技术有限公司",
+              "注册资本":"512233.000000万美元",
+              "实缴资本":"59690.0万美元",
+              "统一社会信用代码":"91330100716105852F"
+              },
               resultTAG :true,
               results:null,
               loads:false,
@@ -69,8 +88,7 @@
           }
       },
       methods:{
-          async test(){
-            // const url = '/test/crawler/sdxy_data_search';
+          async a(){
             const url = this.urls;
             let formData = new FormData();
 
@@ -108,6 +126,7 @@
     margin: 0;
     padding: 0;
     width: 99.9%;
+    margin-left: 1px;
     h2{
       transform: translate(-15px,70px);
       color:#FFFFFF;
@@ -124,7 +143,7 @@
     }
     .top_select{
       margin-left: -70px;
-       transform: translate(0,120px);
+      transform: translate(0,120px);
     }
   }
   .icon-close{
