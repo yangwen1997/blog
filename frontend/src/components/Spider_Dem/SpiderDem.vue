@@ -83,7 +83,14 @@
       },
       methods:{
           async a(){
-            const url = this.urls;
+            var url;
+            debugger;
+            if (this.value !== '全部信息查询'){
+              url= this.urls[0];
+            }else{
+              url = this.urls[1];
+            }
+
             let formData = new FormData();
 
             this.userid = this.input;

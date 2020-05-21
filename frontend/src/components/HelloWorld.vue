@@ -40,26 +40,14 @@
           </template>
 
           <el-menu-item-group>
-            <el-submenu index="1-2">
-            <span slot="title">企查查程序</span>
-            <el-menu-item index="1-2-1">企查查基本信息演示</el-menu-item>
-          </el-submenu >
-            <el-submenu index="1-3">
-            <span slot="title">水滴信用程序</span>
-            <el-menu-item index="1-3-1" >水滴信用基本信息演示</el-menu-item>
-          </el-submenu>
-            <el-submenu index="1-4">
-            <span slot="title">百度信用程序</span>
-            <el-menu-item index="1-4-1">百度信用基本信息演示</el-menu-item>
-          </el-submenu>
-            <el-submenu index="1-5">
-            <span slot="title">天眼查</span>
-            <el-menu-item index="1-5-1">天眼查基本信息演示</el-menu-item>
-          </el-submenu>
+            <el-menu-item index="2-1">爬虫数据表信息</el-menu-item>
+            <el-menu-item index="2-2">大数据表字段信息</el-menu-item>
+            <el-menu-item index="2-3">裁判文书表信息</el-menu-item>
           </el-menu-item-group>
 
 
         </el-submenu>
+
         <el-submenu index="3">
           <template slot="title">
             <i class="el-icon-location"></i>
@@ -127,10 +115,8 @@
        </el-header>
 
       <!--组件视图-->
-      <el-main ><router-view/></el-main>
+      <el-main ><router-view></router-view></el-main>
 
-      <!--底部，不展示-->
-      <!--<el-footer>Footer</el-footer>-->
     </el-container>
 
 </el-container>
@@ -155,16 +141,35 @@
         }else if(val == '1-3-1'){
           this.compantName = "水滴信用";
            let img = require('../assets/spider/sdxy.png');
-          this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"url":"/crawler/sdxy_data_search","img":img}})
+          this.$router.push({path:'/Spider',query:{
+            "compantName":this.compantName,
+              "url":["/crawler/sdxy_basic","/crawler/sdxy_data_search"],
+              "img":img
+          }
+          })
         }else if(val == '1-4-1'){
           this.compantName = "百度信用";
           let img = require('../assets/spider/bdxy.jpg');
-          this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"img":img}})
+
+          this.$router.push({path:'/Spider',query:{"compantName":this.compantName,
+              "url":["/crawler/bdxy_basic"],
+              "img":img
+          }})
         }else if(val == '1-5-1'){
           this.compantName = "天眼查";
           let img = require('../assets/spider/tyc.jpg');
           this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"img":img}})
+        }else if(val == '2-1'){
+          let table_Name = '爬虫数据表信息'
+           this.$router.push({path:'/dataMange',query:{"table_Name":table_Name}})
+        }else if(val == '2-2'){
+          let table_Name = '大数据表字段信息'
+           this.$router.push({path:'/dataMange',query:{"table_Name":table_Name}})
+        }else if(val == '2-3'){
+          let table_Name = '裁判文书表信息'
+           this.$router.push({path:'/dataMange',query:{"table_Name":table_Name}})
         }
+
 
         console.log(val)
 
