@@ -3,7 +3,7 @@
 
         <div class="wrap">
           <ul>
-            <li v-for="item in items" :key="item.id"><a href="javascript:void(0)" @click="table_info()">{{item.ch_table}}</a></li>
+            <li v-for="item in items" :key="item.id"><a href="javascript:void(0)" @click="table_info(item.ch_table)">{{item.ch_table}}</a></li>
           </ul>
         </div>
 
@@ -27,6 +27,7 @@
              local:"",
              url:'dbmanage/dbpage',
             formData:new FormData(),
+            data:"",
           }
         },
         watch:{
@@ -56,14 +57,21 @@
               if (localStorage.getItem( this.local)){
 
               }else {
-                  localStorage.setItem( this.local,resp.data.msg)
+                  localStorage.setItem( this.local,JSON.stringify(resp.data.msg))
               }
 
           },
-          table_info(){
-            let table_name_info = this.dict[this.question][0];
+          table_info(table_name){
             let local = this.dict[this.question][1];
-            this.$router.push({path:'/TableInfo',query:{"table_name_info":table_name_info,"local":local}})
+            let table_data =  JSON.parse(localStorage.getItem(local));
+            debugger
+            for(var i=0; i <table_data.length; i++){
+              if(table_data[i]["ch_table"] ==table_name){
+                this.data = table_data[i];
+                break
+              }
+            }
+            this.$router.push({path:'/TableInfo',query:{"data":this.data}})
           }
         },
       async mounted(){
@@ -77,7 +85,7 @@
                 if (localStorage.getItem( this.local)){
 
                 }else {
-                    localStorage.setItem( this.local,resp.data.msg)
+                   localStorage.setItem( this.local,JSON.stringify(resp.data.msg))
                 }
         },
     }
@@ -108,7 +116,12 @@
       float: left;
       border-right: 1px solid #dadada;
       border-bottom: 1px solid #dadada;
-      list-style: none
+      list-style: none;
+      line-height: 5;
+      font-size: 18px;
+      a{
+        color: #004b92;
+      }
     }
   }
 }
