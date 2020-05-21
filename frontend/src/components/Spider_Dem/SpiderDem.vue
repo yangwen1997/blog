@@ -58,20 +58,14 @@
               input: '',
            options: [
              {
-          value: '选项1',
-          label: '黄金糕'
+          value: '全部信息查询',
+          label: '全部信息查询'
         }, {
-          value: '选项2',
-          label: '双皮奶'
+          value: '基本信息查询',
+          label: '基本信息查询'
         }, {
-          value: '选项3',
-          label: '蚵仔煎'
-        }, {
-          value: '选项4',
-          label: '龙须面'
-        },{
-          value: '选项5',
-          label: '北京烤鸭'
+          value: '股东信息查询',
+          label: '股东信息查询'
         }
           ],
             value: '',
@@ -93,12 +87,13 @@
             let formData = new FormData();
 
             this.userid = this.input;
-            formData.append("company",this.userid);
-             debugger;
+            formData.append("company_name",this.userid);
+            debugger;
+            formData.append("ApiType",this.value);
+
              this.loads = true;
             let resp = await post(url,formData);
             this.loads = false;
-            debugger;
 
             console.log(resp.data);
             if (resp.data.data){

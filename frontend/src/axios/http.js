@@ -8,7 +8,7 @@ const service = axios.create({
     "accept": "*/*",
           },
     //baseURL :不进行配置
-    // baseURL: '/test',  // api的base_url
+    baseURL: '/test',  // api的base_url
     timeout: 3000000,  // 请求超时时间
     withCredentials : true
 });

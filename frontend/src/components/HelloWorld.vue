@@ -155,7 +155,7 @@
         }else if(val == '1-3-1'){
           this.compantName = "水滴信用";
            let img = require('../assets/spider/sdxy.png');
-          this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"url":"/test/crawler/sdxy_data_search","img":img}})
+          this.$router.push({path:'/Spider',query:{"compantName":this.compantName,"url":"/crawler/sdxy_data_search","img":img}})
         }else if(val == '1-4-1'){
           this.compantName = "百度信用";
           let img = require('../assets/spider/bdxy.jpg');
@@ -186,6 +186,7 @@
     display: block;
     position: relative;
     .el-menu{
+      min-height: 800px;
       background-color:#222d32;
     }
   }
