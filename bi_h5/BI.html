@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>顶呱呱12周年庆8/25活动</title>
+    <link rel="stylesheet" href="css/bootstrap.css" >
+    <link rel="stylesheet" href="css/liMarquee.css" >
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery.liMarquee.js"></script>
+    <script src="js/axios.js"></script>
+    <style >
+            .col-md-3{
+                min-height: 900px;
+                margin:0 35px 0 35px;
+            }
+           .col-md-5{
+                 min-height: 900px;
+            }
+
+        .complete_title,.contribution_title{
+            font-size: 25px;
+            text-shadow: 2px 1px 1px #a520a5;
+        }
+        .complete_title{
+            /*transform: translate(150px,90px);*/
+            margin-left: 150px;
+            margin-top: 62px;
+        }
+        .contribution_title{
+            margin-left: 60px;
+            margin-top: 65px;
+        }
+
+        .left_tr{
+            font-size: 16px;
+            font-weight: 900;
+            transform: translate(20px,0);
+            height: 41px;
+        }
+        .sides_td{
+            font-size: 20px;
+            font-weight: 600;
+            /*width: 80px;*/
+        }
+        .sides_span{
+            margin-left: 10px;
+            font-size: 13px;
+            color: yellow;
+        }
+        .right_tr{
+            font-size: 16px;
+            font-weight: 900;
+            transform: translateX(25px);
+            height: 41px;
+        }
+        .Tips{
+            font-size: 23px;
+            transform: translate(50px, -45px);
+        }
+        .dateNum{
+            font-size: 75px;
+            font-weight: 600;
+            transform: translate(50px, -65px);
+        }
+
+        #timeShow{
+               font-size: 65px;
+                font-family: monospace;
+                font-weight: 900;
+                transform: translate(210px, -20px);
+        }
+        .dateDiv{
+            margin: 50px 0 0 80px;
+            max-height: 80px;
+        }
+        .top>div{
+            padding: 40px;
+        }
+        #buttomTitle{
+            margin-left: 250px;
+            font-size: 30px;
+        }
+        .buttomsides{
+            font-size: 25px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        .dowebok {height: 200px; margin:  auto; font-size: 14px;transform: translateY(-13px)}
+        .dowebokTd{
+            font-size: 16px;
+            height: 66px;
+        }
+        .contentTable{
+            /*transform: translate(0,80px);*/
+            margin-top: 80px;
+        }
+        .contentTable tr td:nth-child(1){
+            max-width: 100px;
+            transform: translate(130px,0);
+        }
+        .contentTable tr td:nth-child(2){
+            max-width: 100px;
+            transform: translate(-50px,0);
+        }
+        .contentTable tr td:nth-child(3){
+            max-width: 90px;
+            /*transform: translate(10px,0);*/
+        }
+        .contentTable tr td:nth-child(4){
+            max-width: 100px;
+            transform: translate(65px,0);
+        }
+       .contentTable tr td:nth-child(5){
+            max-width: 100px;
+            /*transform: translate(5,0);*/
+        }
+
+         #buttomTitle,.Tips,.complete_title,.contribution_title{
+             -webkit-text-stroke: 0.5px #F9D0F9;
+        }
+        .leftTable{
+            transform: translate(70px, 30px);
+        }
+        .sides{
+            font-size: 25px;
+        }
+        .rightTable{
+            transform: translate(10px, 30px);
+
+        }
+        .buttomContent{
+            transform: translate(-50px,-60px);
+        }
+        .left_tr > td:nth-child(1){
+            transform: translateX(-5px);
+        }
+        .left_tr > td:nth-child(2){
+            transform: translateX(35px);
+        }
+        .left_tr > td:nth-child(3){
+            transform: translateX(-5px);
+        }
+
+        .right_tr > td:nth-child(1){
+            transform: translateX(-15px);
+        }
+
+        .left_tr,.right_tr,.dowebokTd ,.buttomsides,#buttomTitle,#timeShow,.dateNum,.Tips,.complete_title,.contribution_title,.sides_tds,.sides_td,.sides{
+             color: #FFFEFF;
+         }
+        html,body{
+            overflow: hidden;
+            background:url("a.png") no-repeat;
+            background-size: 100% auto;
+            min-width: 1200px;
+        }
+        ul,li,th,tr{
+            list-style: none;
+        }
+        .table-hover > tbody > tr:hover{
+            background-color: transparent;
+        }
+        /*流式布局 自动缩放*/
+        @media screen and (max-width: 1200px) {
+            body {
+                zoom:0.64
+            }
+        }
+        @media screen and (min-width: 1200px)  and (max-width: 1300px) {
+        body {
+                zoom:0.67
+            }
+        }
+        @media screen and (min-width: 1300px)  and (max-width: 1400px) {
+            body {
+                zoom:0.7
+            }
+        }
+        @media screen and (min-width: 1400px)  and (max-width: 1500px) {
+            body {
+                zoom:0.76
+            }
+        }
+        @media screen and (min-width: 1500px)  and (max-width: 1600px) {
+            body {
+                zoom:0.82
+            }
+        }
+        @media screen and (min-width: 1600px)  and (max-width: 1650px) {
+            body {
+                zoom:0.85
+            }
+        }
+
+
+    </style>
+    <script src="../../../book/meiduo/20-【项目】美多商城/【项目】美多商城/4-代码/__MACOSX/sh14_meiduo/front_end_pc/js/._vue-2.5.16.js"></script>
+</head>
+<body>
+    <div class="container-fluid" >
+        <div class="row">
+          <div class="col-md-3">
+              <div class="complete_title"><span>当日业绩完成率排名</span></div>
+
+               <table class="table table-hover leftTable">
+                   <tr >
+                       <th class="sides">分公司</th>
+                       <th class="sides" style="transform: translateX(20px)">目标（万）</th>
+                       <th class="sides">完成（万）</th>
+                   </tr>
+               </table>
+          </div>
+          <div class="col-md-5">
+              <div class="top">
+                  <div id="timeShow"></div>
+                  <div style="transform: translateY(-20px);">
+                      <div class="dateDiv">
+                          <div class="Tips">当日收款总额</div>
+                          <div class="dateNum">0</div>
+                      </div>
+                      <div class="dateDiv">
+                          <div class="Tips">当日业绩总额</div>
+                          <div class="dateNum">0</div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="buttom">
+                  <div id="buttomTitle">当日见客量排名</div>
+                  <div class="buttomContent">
+                      <div>
+                          <div class="buttomsides" style="transform: translate(120px, 120px);">分公司</div>
+                           <div class="buttomsides" style="transform: translate(260px, 86px);">目标</div>
+                          <div class="buttomsides" style="transform: translate(390px, 52px);">见客量</div>
+                          <div class="buttomsides" style="transform: translate(550px, 18px);">完成率</div>
+                          <div class="buttomsides" style="transform: translate(660px,-16px);">排名</div>
+                      </div>
+
+                        <div class="dowebok">
+                          <table class="table table-hover contentTable">
+                               <tr></tr>
+                           </table>
+
+                         </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="contribution_title"><span>当日业绩贡献率排名</span></div>
+
+               <table class="table table-hover rightTable">
+                   <tr >
+                       <th class="sides">分公司</th>
+                       <th class="sides">贡献率</th>
+                       <th class="sides">排名</th>
+                   </tr>
+               </table>
+          </div>
+        </div>
+    </div>
+</body>
+    <script lang="javascript">
+        var t,left,right,add_right_table,scoral,mon ;
+        var count = 0;
+
+        function getNowFormatDate() {
+                var date = new Date();
+                var seperator1 = "-";
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var strDate = date.getDate();
+                if (month >= 1 && month <= 9) {
+                    month = "0" + month;
+                }
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                }
+                var currentdate = year + seperator1 + month + seperator1 + strDate;
+                return currentdate;
+        }
+        (function time() {
+            //时间
+            clearTimeout(t);//清除定时器
+            dt = new Date();
+            var day=dt.getDay();
+            var h=dt.getHours();
+            var m=dt.getMinutes();
+            var s=dt.getSeconds();
+            if(h<10){h="0"+h;}
+            if(m<10){m="0"+m;}
+            if(s<10){s="0"+s;}
+            document.getElementById("timeShow").innerHTML =  ""+h+":"+m+":"+s+"";
+            t = setTimeout(time,1000); //设定定时器，循环执行
+        })();
+        $(function(){
+            $('.dowebok').liMarquee({
+                direction: 'up'
+            });
+        });
+        (async function get_left_tables(){
+            //创建左侧table表格实时
+            clearTimeout(left);
+            let currentdate = getNowFormatDate();
+            // var urls = 'https://tdavinci.dgg188.cn/api/v1/custom/summaryOfPerformanceLeftForDay?dateTime=' + currentdate;
+            var urls = 'http://nmnsgbqb.com:9191/api/v1/custom/summaryOfPerformanceLeftForDay?dateTime=' + currentdate;
+            let resp = await axios.get(urls);
+            //  var datas
+            // $.ajax({
+            //     url:urls,
+            //     type:"get",
+            //     // async:false,
+            //     success:function (res) {
+            //         // datas = res.data.data;
+            //     },
+            //     error:function (err) {
+            //         console.log(err)
+            //     }
+            // })
+            // console.log(resp);
+
+            let datas = resp.data.data;
+            var leftTable = document.querySelector('.leftTable');
+            var tr_lt = leftTable.querySelectorAll('tr');
+            for(var x =0; x<tr_lt.length;x++){
+                if (x !== 0){
+                    leftTable.removeChild(tr_lt[x]);
+                    console.log(x)
+                }
+            }
+
+            for(var i=0; i<datas.length;i++){
+
+                //创建tr标签
+                var tr = document.createElement('tr');
+                tr.className = "left_tr";
+                leftTable.appendChild(tr);
+
+                for(var k in datas[i]){
+                      var td = document.createElement('td');
+                       tr.appendChild(td);
+                    if(k === 'performanceAmount'){
+
+                            var span1 = document.createElement('span');
+                            var span2 = document.createElement('span');
+
+                            span1.className = "sides_td";
+                            span2.className = "sides_span";
+                            span1.innerHTML = parseFloat(parseFloat(datas[i]["performanceAmount"])/10000).toFixed(2);
+                            span2.innerHTML = datas[i]["fillRate"];
+                            if(i < 3){
+                                span2.style.color = 'green'
+                            }
+
+                            td.appendChild(span1);
+                            td.appendChild(span2);
+                            break
+                    }else if(k === 'rank'){
+                        continue;
+                    }else if(k === 'point'){
+                         td.innerHTML = parseFloat(parseFloat(datas[i][k])/10000).toFixed(2);
+                    }
+                    else{
+                        td.innerHTML = datas[i][k];
+                    }
+
+                }
+
+            }
+            left = setTimeout(get_left_tables,3000);
+        })();
+        (async function add_right_tables(){
+            // 创建右侧实时表格
+            clearTimeout(add_right_table);//清除定时器
+            let currentdate = getNowFormatDate();
+
+            // var urls = 'https://tdavinci.dgg188.cn/api/v1/custom/summaryOfPerformanceRightForDay?dateTime=' + currentdate;
+            var urls = 'http://nmnsgbqb.com:9191/api/v1/custom/summaryOfPerformanceRightForDay?dateTime=' + currentdate;
+            let resp = await axios.get(urls);
+            let datas = resp.data.data;
+            var rigTable = document.querySelector('.rightTable');
+
+            var tr_lt = rigTable.querySelectorAll('tr');
+
+            for(var x =0; x<tr_lt.length;x++){
+                if (x !== 0){
+                    rigTable.removeChild(tr_lt[x]);
+                    console.log(x)
+                }
+            }
+
+            for(var i=0; i<datas.length;i++){
+
+                //创建tr标签
+                var tr = document.createElement('tr');
+                tr.className = "right_tr";
+                rigTable.appendChild(tr);
+
+                for(var k in datas[i]){
+                    var td = document.createElement('td');
+                    if(k == 'company' || k == 'contribution' || k == 'rank'){
+                      td.innerHTML = datas[i][k];
+                      tr.appendChild(td)
+                    }
+
+                }
+
+            }
+             add_right_table = setTimeout(add_right_tables,3000); //设定定时器，循环执行
+        })();
+        (async function scroll_get_content(){
+            // 中间实时滚动数据
+
+           clearTimeout(scoral);//清除定时器
+
+            let currentdate = getNowFormatDate();
+            var urls = 'https://tdavinci.dgg188.cn/api/v1/custom/meetCustomerRank?dateTime=' + currentdate;
+            let resp = await axios.get(urls);
+            let datas = resp.data.data;
+
+            var contentTable = document.querySelector('.contentTable');
+            var tr_lt = contentTable.querySelectorAll('tr');
+            for(var x =0; x<tr_lt.length;x++){
+                if (x !== 0){
+                    contentTable.removeChild(tr_lt[x]);
+                    console.log(x)
+                }
+            }
+
+            for(var i=0; i<datas.length;i++){
+
+                //创建tr标签
+                var tr = document.createElement('tr');
+                tr.className = "dowebokTd";
+                contentTable.appendChild(tr);
+
+                for(var k in datas[i]){
+                    var td = document.createElement('td');
+                    if(k == 'company' || k == 'fillRate' ||k == 'numOfVisitPeople' || k == 'point'|| k == 'rank') {
+                        td.innerHTML = datas[i][k];
+                        tr.appendChild(td)
+                    }
+                }
+            }
+            scoral = setTimeout(scroll_get_content,80000); //设定定时器，循环执行
+
+
+
+        })();
+        (async function mons() {
+            //获取收款额度 和业绩额度
+            clearTimeout(mon);//
+            let currentdate = getNowFormatDate();
+            var url = 'https://tdavinci.dgg188.cn/api/v1/custom/paymentTotalForDay?dateTime=' + currentdate;
+            var urls = 'https://tdavinci.dgg188.cn/api/v1/custom/summaryOfPerformanceForDay?dateTime=' + currentdate;
+
+            let res = await axios.get(url);
+            let resp = await axios.get(urls);
+            
+            try {
+                 let data = res.data.data.payAmount;
+            document.querySelectorAll('.dateNum')[0].innerHTML = data;
+
+            }catch (e) {
+             console.log(e)
+            }
+
+            try{
+                let datas = resp.data.data.performanceAmount;
+                document.querySelectorAll('.dateNum')[1].innerHTML = datas;
+            }catch (e) {
+                console.log(e)
+            }
+
+            mon = setTimeout(mons,30000); //设定定时器，循环执行
+        })()
+
+
+    </script>
+</html>
